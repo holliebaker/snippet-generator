@@ -1,48 +1,64 @@
 import random
 
 adjectives = [
-    "fast",
+    "sleepy",
     "friendly",
     "grumpy",
     "wise",
     "hungry",
-    "excited"
+    "excited",
+    "confused",
+    "old"
 ]
 
-characters = [
+things = [
     "hippo",
     "fox",
+    "llama",
+    "dinosaur",
     "dog",
-    "boy"
+    "boy",
+    "duck",
+    "elephant",
+    "book",
+    "sausage",
+    "lemon",
+    "table",
+    "banana",
+    "cheese"
 ]
 
 actions = [
     "likes",
     "eats",
-    "reads",
-    "deserves"
-]
-
-items = [
-    "books",
-    "maths papers",
-    "chocolate",
-    "cheese",
-    "sausages"
+    "befriends",
+    "fights",
+    "helps"
 ]
 
 def pick (list):
     return random.choice(list)
 
+def optional (word):
+    if (bool(random.getrandbits(1))):
+        return word
+
+    return ""
+
+def remove_empty(parts):
+    return [word for word in parts if word]
+
 def form_sentence (*parts):
-    return ' '.join(parts)
+    return ' '.join(remove_empty(parts))
 
 sentence = form_sentence(
     "The",
-    pick(adjectives),
-    pick(characters),
+    optional(pick(adjectives)),
+    pick(things),
     pick(actions),
-    pick(items)
+    "the",
+    optional(pick(adjectives)),
+    pick(things)
 )
 
 print(sentence)
