@@ -39,3 +39,7 @@ words:
 
 ```
 
+## Sample words and config
+
+Please see https://github.com/holliebaker/snippet-generator-config.
+
